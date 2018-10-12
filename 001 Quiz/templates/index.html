@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Quiz api</title>
+</head>
+<body>
+    <h1>Python Quiz</h1>
+    <!-- wyświetlenie komunikatu z funkcji flash -->
+    <p>
+        {% for message in get_flashed_messages() %}
+            {{message}}
+        {% endfor %}
+    </p>
+    <form method="POST">
+        {% for p in pytania%}
+         <p>
+             {{p.pytanie}}
+             <br>
+             <!-- zapamietujemy nr pytania licząc od zera -->
+             {% set pnr = loop.index0 %}
+             <!-- przegląday odpowiedzi dla danego pytania -->
+             {% for o in p.odpowiedzi%}
+                <label>
+                    <!-- odpowiedzi wyświetlane jako pole typu radio-->
+                    <input type="radio" value="{{o}}" name="{{pnr}}">
+                    {{o}}
+                </label>
+             <br>
+            {% endfor %}
+         </p>
+        {% endfor %}
+
+        <!-- przycisk wysyłający wypełniony formularz-->
+        <button type="submit">Sprawdź odpowiedzi</button>
+    </form>
+</body>
+</html>
