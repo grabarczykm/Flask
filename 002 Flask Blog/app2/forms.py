@@ -1,7 +1,8 @@
 """ Place for forms """
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField #importowanie klas pól do formualrza
-from wtforms.validators import DataRequired, Length, Email, EqualTo #importowanie klas validatorów ||
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError #importowanie klas validatorów ||
+from app2.models import User
 # DataRequired - pole nie moze zostać puste
 
 #Formularz rejestracji
@@ -14,6 +15,19 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up') #pole przesyłające dane z całego formularza
+
+    #Funkcja służąca validowaniu rejestracji (czy nazwy i mail się nie powtarzają)
+    def validate_username(self, username):
+
+        user = User.query.filter_by(username = username.data).first() # sprawdzanie czy istnieje użytkownik o username wprowadzonym wlasnie do formularza rejestracji
+        if user:
+            raise ValidationError('That username is taken. Please choose a different one.')
+
+    def validate_email(self, email):
+
+        user = User.query.filter_by(email=email.data).first()  # sprawdzanie czy istnieje użytkownik o username wprowadzonym wlasnie do formularza rejestracji
+        if user:
+            raise ValidationError('That email is taken. Please choose a different one.')
 
 #Formularz logowania
 class LoginForm(FlaskForm):
