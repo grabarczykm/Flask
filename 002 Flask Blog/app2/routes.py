@@ -9,13 +9,13 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route("/")
 @app.route("/home")
 def home():
-    posts =  Post.query.all()#wszystkie posty
+    page = request.args.get('page', default=1, type=int)  # pobieranie numeru aktualnej strony z aplikacji
+    posts =  Post.query.paginate(per_page=5, page=page)#wszystkie posty
     return render_template("home.html", posts=posts)
 
 
 @app.route("/about")
 def about():
-
     return render_template("about.html", title='About')
 
 @app.route("/register", methods=['POST', 'GET'])

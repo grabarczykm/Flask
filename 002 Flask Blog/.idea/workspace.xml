@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1e0bc32-95dc-4560-aef2-d62ad4067538" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app2/templates/post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app2/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app2/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app2/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app2/site.db" beforeDir="false" afterPath="$PROJECT_DIR$/app2/site.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2/templates/create_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app2/templates/create_post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app2/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app2/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app2/templates/layout.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,16 +64,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="1093" />
-          <entry key="py" value="5637" />
+          <entry key="html" value="1689" />
+          <entry key="py" value="5775" />
           <entry key="txt" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1093" />
+          <entry key="HTML" value="1689" />
           <entry key="PLAIN_TEXT" value="43" />
-          <entry key="Python" value="5637" />
+          <entry key="Python" value="5775" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -122,14 +117,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app2/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="669">
-              <caret line="152" column="33" selection-start-line="152" selection-start-column="33" selection-end-line="152" selection-end-column="33" />
+            <state relative-caret-position="306">
+              <caret line="18" column="55" lean-forward="true" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1539778746452" expanded="true" signature="2686:2691" ph="..." />
-                <marker date="1539778746452" expanded="true" signature="2835:3269" ph="..." />
-                <marker date="1539778746452" expanded="true" signature="5370:5484" ph="..." />
-                <marker date="1539778746452" expanded="true" signature="5623:5624" ph="..." />
+                <marker date="1539782676705" expanded="true" signature="2818:2823" ph="..." />
+                <marker date="1539782676705" expanded="true" signature="2967:3401" ph="..." />
+                <marker date="1539782676705" expanded="true" signature="5502:5616" ph="..." />
+                <marker date="1539782676705" expanded="true" signature="5755:5756" ph="..." />
               </folding>
             </state>
           </provider>
@@ -150,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app2/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="82" selection-start-line="11" selection-start-column="82" selection-end-line="11" selection-end-column="82" />
+            <state relative-caret-position="493">
+              <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -235,9 +230,9 @@
         <option value="$PROJECT_DIR$/app2/templates/account.html" />
         <option value="$PROJECT_DIR$/app2/templates/layout.html" />
         <option value="$PROJECT_DIR$/app2/forms.py" />
-        <option value="$PROJECT_DIR$/app2/templates/home.html" />
         <option value="$PROJECT_DIR$/app2/templates/create_post.html" />
         <option value="$PROJECT_DIR$/app2/templates/post.html" />
+        <option value="$PROJECT_DIR$/app2/templates/home.html" />
         <option value="$PROJECT_DIR$/app2/routes.py" />
       </list>
     </option>
@@ -245,7 +240,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="1911" />
     <option name="y" value="65" />
-    <option name="width" value="813" />
+    <option name="width" value="997" />
     <option name="height" value="912" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -317,7 +312,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1911" y="65" width="813" height="912" extended-state="0" />
+    <frame x="1911" y="65" width="997" height="912" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.31311598" />
@@ -429,17 +424,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app2/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-            <marker date="1539610824915" expanded="true" signature="343:386" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app2/templates/create_post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -454,13 +438,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app2/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="82" selection-start-line="11" selection-start-column="82" selection-end-line="11" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app2/templates/post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -471,16 +448,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app2/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app2/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1539610824915" expanded="true" signature="343:386" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app2/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="152" column="33" selection-start-line="152" selection-start-column="33" selection-end-line="152" selection-end-column="33" />
+        <state relative-caret-position="306">
+          <caret line="18" column="55" lean-forward="true" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1539778746452" expanded="true" signature="2686:2691" ph="..." />
-            <marker date="1539778746452" expanded="true" signature="2835:3269" ph="..." />
-            <marker date="1539778746452" expanded="true" signature="5370:5484" ph="..." />
-            <marker date="1539778746452" expanded="true" signature="5623:5624" ph="..." />
+            <marker date="1539782676705" expanded="true" signature="2818:2823" ph="..." />
+            <marker date="1539782676705" expanded="true" signature="2967:3401" ph="..." />
+            <marker date="1539782676705" expanded="true" signature="5502:5616" ph="..." />
+            <marker date="1539782676705" expanded="true" signature="5755:5756" ph="..." />
           </folding>
         </state>
       </provider>
