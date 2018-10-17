@@ -9,8 +9,8 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route("/")
 @app.route("/home")
 def home():
-    page = request.args.get('page', default=1, type=int)  # pobieranie numeru aktualnej strony z aplikacji
-    posts =  Post.query.paginate(per_page=5, page=page)#wszystkie posty
+    page = request.args.get('page', 1, type=int) #Pobieranie numeru strony
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5) #wszystkie posty
     return render_template("home.html", posts=posts)
 
 
@@ -151,3 +151,13 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted', 'success')
     return redirect(url_for('home'))
+
+#Strona z postami wybranego użytkownika
+@app.route("/user/<string:username>")
+def user_posts(username):
+    page = request.args.get('page', 1, type=int) #Pobieranie numeru strony
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate(page=page, per_page=5) #wszystkie posty stworzone przez jednego użytkownika, z paginacją i posortowane względem daty dodania
+    return render_template("user_posts.html", posts=posts, user=user)
