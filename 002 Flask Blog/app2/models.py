@@ -1,6 +1,7 @@
 from datetime import datetime
-from app2 import db, login_manager #app2 jest nazwą całego modułu || wywołując moduł importujemy z pliku __main__
+from app2 import db, login_manager, app #app2 jest nazwą całego modułu || wywołując moduł importujemy z pliku __main__
 from flask_login import UserMixin
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer #moduł zainstalowany razem z Flaskiem
 
 #Wymagane do login_manager, pozwala odszukać odpowiedniego użytkownika po ID. Połączone z UserMIxin, z class User
 @login_manager.user_loader
@@ -15,6 +16,21 @@ class User(db.Model, UserMixin): # tworzenie klasy użytkowniak w oparciu o mode
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy = True) #powiązanie z klasą Post, backref - dodanie kolumny do klasy Post, atrybut lazy pozwala pobrać dane z klasy Post do danego użytkownika
+
+#Tworzenie tokenów uwierzytelnienie użytkownika
+    def get_reset_token(self, expires_sec=1800):
+        s = Serializer(app.config['SECRET_KEY'], expires_sec)
+        return s.dumps({'user_id': self.id}).decode('utf-8')#zwracanie tokenu wygenerowanego Serilizerem
+
+    @staticmethod #metoda nie będzie oczekiwała argumentu self
+    def verify_reset_token(token):
+        s = Serializer(app.config['SECRET_KEY'])
+        try:
+            user_id = s.loads(token)['user_id']#Jeżeli token nie wygasł uzyskujemy ID użytkownika
+        except:
+            return None
+
+        return User.query.get(user_id)# zwrócenie użytkownika z DB na podstawie pobranego z tokena ID
 
     def __repr__(self): #
         return(f"User('{self.username}','{self.email}','(self.image_file)')")
