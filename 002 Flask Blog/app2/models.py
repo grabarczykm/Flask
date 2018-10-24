@@ -1,5 +1,6 @@
 from datetime import datetime
-from app2 import db, login_manager, app #app2 jest nazwą całego modułu || wywołując moduł importujemy z pliku __main__
+from flask import current_app
+from app2 import db, login_manager #app2 jest nazwą całego modułu || wywołując moduł importujemy z pliku __main__
 from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer #moduł zainstalowany razem z Flaskiem
 
@@ -19,12 +20,12 @@ class User(db.Model, UserMixin): # tworzenie klasy użytkowniak w oparciu o mode
 
 #Tworzenie tokenów uwierzytelnienie użytkownika
     def get_reset_token(self, expires_sec=1800):
-        s = Serializer(app.config['SECRET_KEY'], expires_sec)
+        s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
         return s.dumps({'user_id': self.id}).decode('utf-8')#zwracanie tokenu wygenerowanego Serilizerem
 
     @staticmethod #metoda nie będzie oczekiwała argumentu self
     def verify_reset_token(token):
-        s = Serializer(app.config['SECRET_KEY'])
+        s = Serializer(current_app.config['SECRET_KEY'])
         try:
             user_id = s.loads(token)['user_id']#Jeżeli token nie wygasł uzyskujemy ID użytkownika
         except:
