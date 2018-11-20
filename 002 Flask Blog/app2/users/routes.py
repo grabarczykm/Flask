@@ -12,7 +12,7 @@ users = Blueprint('users', __name__)
 def register():
     if current_user.is_authenticated:#wyłączenie strony rejestracji jeżeli użytkownik jest zalogowany
         return redirect(url_for('main.home'))
-    form = RegistrationForm()#stworzenie instancji formularze na podstawie stworzonego formularze rejestracji
+    form = RegistrationForm()#stworzenie instancji formularze na podstawie stworzonego formularza rejestracji
 
     if form.validate_on_submit():#czy formularz został zvalidowany podczas przesyłania(submit)
 
