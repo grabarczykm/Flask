@@ -12,7 +12,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)#instancja bazy danych
 migrate = Migrate(app, db) #instancja migratione engine
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'login' #route do którego zostaniemy przekierowani w przypadku niespełniena wymagania 'login_required'
 login_manager.login_message_category='info'
 bcrypt = Bcrypt(app)
 
