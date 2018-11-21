@@ -1,3 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
+    <!-- Opublikowane przepisy -->
+    {% for receipe in receipess %}
+        <article class="media content-section">
+           <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ receipe.author.username }}</a>
+              <small class="text-muted">{{ receipe.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ receipe.title }}</a></h2>
+            <p class="article-content">{{ receipe.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
 {% endblock content %}
