@@ -1,7 +1,7 @@
 from app import app, bcrypt, db
 from flask import render_template, url_for, flash, redirect
 from app.models import User, Receipe
-from app.forms import RegistrationForm
+from app.forms import RegistrationForm, LoginForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -13,7 +13,22 @@ def home():
 
 @app.route("/login")
 def login():
-    return render_template('login.html')
+
+    # Jeżeli użytkownik jest zalogowany
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember = form.remember.data)
+            return  redirect(url_for('home'))
+        else:
+            flash('Login Unsuccesfull. Please check email adress and password')
+
+    return render_template('login.html', form=form)
 
 @app.route("/register", methods=['POST','GET'])
 def register():
@@ -23,6 +38,7 @@ def register():
         return redirect(url_for('home'))
 
     form = RegistrationForm()
+    
 
     #Jeżeli formularz został wypełniony prawidłowo
     if form.validate_on_submit():
