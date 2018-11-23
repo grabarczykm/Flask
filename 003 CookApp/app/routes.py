@@ -1,7 +1,7 @@
 from app import app, bcrypt, db
 from flask import render_template, url_for, flash, redirect, request
 from app.models import User, Receipe
-from app.forms import RegistrationForm, LoginForm
+from app.forms import RegistrationForm, LoginForm, ReceipeForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -66,3 +66,17 @@ def logout():
 @login_required
 def account():
     return render_template('account.html')
+
+@app.route("/new_receipe",methods=['POST','GET'])
+@login_required
+def new_receipe():
+    form = ReceipeForm()
+    if form.validate_on_submit():
+        receipe = Receipe(title = form.title.data, content=form.content.data, author=current_user)
+        db.session.add(receipe)
+        db.session.commit()
+
+        flash('Your receipe has been added!', 'success')
+        return redirect(url_for('home'))
+
+    return render_template('new_receipe.html', form=form)

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField, SubmitField, BooleanField
+from wtforms import StringField,PasswordField, SubmitField, BooleanField,TextAreaField, FieldList, FormField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from app.models import User
 
@@ -34,3 +34,14 @@ class LoginForm(FlaskForm):
                              validators=[DataRequired()])
     submit = SubmitField('Login')
     remember = BooleanField('Remember Me')
+
+class IngredientForm(FlaskForm):
+    ingredient = StringField('Ingridient', validators=[DataRequired])
+
+class ReceipeForm(FlaskForm):
+    title = StringField('Title',
+                        validators=[DataRequired(), Length(min = 2, max=200)])
+    ingredients = FieldList(FormField(IngredientForm), min_entries=0)
+    add_ingredient = SubmitField('Add ingredient')
+    content = TextAreaField('Content', validators=[DataRequired()])
+    submit = SubmitField('Send receipe')

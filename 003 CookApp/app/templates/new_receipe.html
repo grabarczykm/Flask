@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container">
+        <div class="row">
+            <input type="hidden" name="count" value="1" />
+            <div class="control-group" id="fields">
+                <label class="control-label" for="field1">Nice Multiple Form Fields</label>
+                <div class="controls" id="profs">
+                    <form method="POST" class="input-append" action="">
+                        {{ form.hidden_tag() }}
+                        <legend class="border-bottom mb-4">Your receipe</legend>
+                        <div class="form-group">
+                            {{ form.title.label(class="form-control-label")}}
+                            {{ form.title(class="form-control form-control-lg") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.ingredients.label(class="form-control-label")}}
+                            <div id="field">{{ form.ingredients(class="input",id="field1") }}<button id="b1" class="btn add-more" type="button">+</button></div>
+                        </div>
+                        <div>
+                            {{ form.content.label(class="form-control-label")}}
+                            {{ form.content(class="form-control form-control-lg") }}
+                        </div>
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </form>
+                <br>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
