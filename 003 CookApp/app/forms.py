@@ -40,3 +40,7 @@ class ReceipeForm(FlaskForm):
                         validators=[DataRequired(), Length(min = 2, max=200)])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Send receipe')
+
+class CommentForm(FlaskForm):
+    content = TextAreaField('Content', validators=[DataRequired()])
+    submit = SubmitField('Send comment')

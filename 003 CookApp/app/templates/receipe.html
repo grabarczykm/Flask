@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-    <!-- Treść posta z przyciskami funkcyjnymi -->
+    <!-- Treść posta  -->
         <article class="media content-section">
             <div class="media-body">
             <div class="article-metadata">
@@ -11,4 +11,9 @@
             <p class="article-content">{{ receipe.content }}</p>
           </div>
         </article>
+    <form action={"url_for('add_comment', receipe_id=receipe.id)"}>
+        <<button type="submit">Dodaj komentarz</button>
+    </form>
+    <!-- Komentarze -->
+
 {% endblock content %}

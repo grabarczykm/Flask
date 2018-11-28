@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1e0bc32-95dc-4560-aef2-d62ad4067538" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../003 CookApp/app/templates/my_account.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../003 CookApp/app/templates/receipe.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../003 CookApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../003 CookApp/app/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/app.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../003 CookApp/app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../003 CookApp/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../003 CookApp/app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../003 CookApp/app/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/static/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../003 CookApp/app/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../003 CookApp/app/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/templates/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../003 CookApp/app/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../003 CookApp/app/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../003 CookApp/app/templates/receipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/../003 CookApp/app/templates/receipe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../003 CookApp/migrations/versions/81ae1d722ec1_.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app2/posts/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+            <state relative-caret-position="425">
+              <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
               <folding>
                 <element signature="e#0#107#0" expanded="true" />
               </folding>
@@ -140,7 +137,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app2/main/routes.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -179,7 +176,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app2/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="211">
@@ -279,6 +276,12 @@
               <item name="002 Flask Blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="002 Flask Blog" type="462c0819:PsiDirectoryNode" />
               <item name="app2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="002 Flask Blog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="002 Flask Blog" type="462c0819:PsiDirectoryNode" />
+              <item name="app2" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="002 Flask Blog" type="b2602c69:ProjectViewProjectNode" />
@@ -581,23 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app2/main/routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app2/posts/routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app2/templates/post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -609,6 +595,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="18" column="83" lean-forward="true" selection-start-line="18" selection-start-column="83" selection-end-line="18" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app2/posts/routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app2/main/routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

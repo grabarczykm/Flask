@@ -1,7 +1,7 @@
 from app import app, bcrypt, db
 from flask import render_template, url_for, flash, redirect, request
 from app.models import User, Receipe, Ingredient
-from app.forms import RegistrationForm, LoginForm, ReceipeForm
+from app.forms import RegistrationForm, LoginForm, ReceipeForm, CommentForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -104,6 +104,12 @@ def new_receipe():
 def receipe(receipe_id):
     receipe = Receipe.query.get(receipe_id)
     return render_template("receipe.html",receipe=receipe)
+
+@app.route("/add_comment")
+def add_comment():
+    form = CommentForm()
+    return render_template('add_comment.html', form = form )
+
 
 
 
