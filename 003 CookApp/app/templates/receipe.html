@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+    <!-- Treść posta z przyciskami funkcyjnymi -->
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{{url_for('account',user_id=receipe.author.id)}}">{{ receipe.author.username }}</a>
+              <small class="text-muted">{{ receipe.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2 class="article-title">{{ receipe.title }}</h2>
+            <p class="article-content">{{ receipe.content }}</p>
+          </div>
+        </article>
+{% endblock content %}

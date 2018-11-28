@@ -1,19 +1,33 @@
 {% extends "layout.html" %}
 {% block content %}
     <!-- Opublikowane przepisy -->
-    {% for receipe in receipess %}
+    {% for receipe in receipess.items %}
         <article class="media content-section">
            <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ receipe.author.username }}</a>
+              <a class="mr-2" href="{{url_for('account',user_id=receipe.author.id)}}">{{ receipe.author.username }}</a>
               <small class="text-muted">{{ receipe.date_posted.strftime('%Y-%m-%d') }}</small>
             </div>
-            <h2><a class="article-title" href="#">{{ receipe.title }}</a></h2>
-            <p class="article-content">{{ receipe.content }}</p>
+            <h2><a class="article-title" href="{{url_for('receipe',receipe_id = receipe.id)}}" >{{ receipe.title }}</a></h2>
+            <p class="article-content hidden">{{ receipe.content }}</p>
+               {% for ing in receipe.ingredients %}
+                    <small  class="text-muted">{{ing.name }}</small>
+               {% endfor%}
           </div>
-            {% for ing in receipe.ingredients %}
-                    <a class="mr-2" href="#">{{ ing.name }}</a>
-            {% endfor %}
+
         </article>
     {% endfor %}
+        {% for page_num in receipess.iter_pages(left_edge = 2, right_edge = 2, left_current = 2, right_current = 2)%}
+            {% if page_num %}
+                {% if receipess.page == page_num%}
+                    <a class="btn btn-info mb-4" href="{{url_for('home', page=page_num)}}">{{page_num}}</a>
+                {% else %}
+                    <a class="btn btn-outline-info mb-4" href="{{url_for('home', page=page_num)}}">{{page_num}}</a>
+                {% endif %}
+            {% else %}
+                ...
+            {% endif %}
+        {% endfor %}
+
+
 {% endblock content %}

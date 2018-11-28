@@ -8,13 +8,15 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route("/")
 @app.route("/home")
 def home():
-    receipess = Receipe.query.order_by(Receipe.date_posted)
+    page = request.args.get('page',1,type=int)
+    receipess = Receipe.query.order_by(Receipe.date_posted.desc()).paginate(page=page, per_page=5)
+    #receipess = Receipe.query.order_by(Receipe.date_posted)
     return render_template('home.html', receipess=receipess)
 
 @app.route("/about")
 def about():
 
-    rec = Receipe.query.filter_by(title='jajka3').first()
+    rec = Receipe.query.filter_by(title='aa').first()
 
     return render_template('about.html', rec=rec)
 
@@ -69,10 +71,13 @@ def logout():
     else:
         return redirect(url_for('home'))
 
-@app.route("/account")
-@login_required
-def account():
-    return render_template('account.html')
+@app.route("/account/<int:user_id>")
+def account(user_id):
+    user = User.query.get(user_id)
+    if user == current_user:
+        return render_template('my_account.html', user=user)
+    if user != current_user:
+        return render_template('account.html', user=user)
 
 @app.route("/new_receipe",methods=['POST','GET'])
 @login_required
@@ -85,16 +90,24 @@ def new_receipe():
         db.session.commit()
 
         ing_list = request.form.getlist('ingredients')
-        if ing_list:
-            for ing in ing_list:
-                ingredient = Ingredient.query.filter_by(name = ing).first()
-                ingredient.receipess.append(receipe)
-                db.session.commit()
+        for ing in ing_list:
+            ingredient = Ingredient.query.filter_by(name = ing).first()
+            ingredient.receipess.append(receipe)
+            db.session.commit()
+            flash('Your receipe has been added!', 'success')
 
-            return render_template('receipess.html', ing_list = ing_list)
-        else:
-            return redirect(url_for('home'))
+        return redirect(url_for('home'))
 
     return render_template('new_receipe.html', form=form, ingredients=ingredients)
+
+@app.route("/post/<int:receipe_id>")
+def receipe(receipe_id):
+    receipe = Receipe.query.get(receipe_id)
+    return render_template("receipe.html",receipe=receipe)
+
+
+
+
+
 
 

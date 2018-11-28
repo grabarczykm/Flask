@@ -30,6 +30,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
+  overflow: hidden;
 }
 
 .article-title {
@@ -43,6 +44,7 @@ a.article-title:hover {
 
 .article-content {
   white-space: pre-line;
+  overflow: hidden;
 }
 
 .article-img {
@@ -87,3 +89,12 @@ a.article-title:hover {
 #field {
     margin-bottom:20px;
 }
+
+.hidden {
+    width: 700px;
+    height: 120px;
+    overflow: hidden;
+
+
+}
+

@@ -9,9 +9,9 @@
   <body>
   <div>
       {{ rec.title }}
-      {% for ing in rec.ingredients %}
-        {{ing.name}}
-      {% endfor %}
+        <div class="hidden">
+          {{ rec.content }}
+        </div>
 
   </div>
   </body>
