@@ -11,6 +11,9 @@
             <h2><a class="article-title" href="#">{{ receipe.title }}</a></h2>
             <p class="article-content">{{ receipe.content }}</p>
           </div>
+            {% for ing in receipe.ingredients %}
+                    <a class="mr-2" href="#">{{ ing.name }}</a>
+            {% endfor %}
         </article>
     {% endfor %}
 {% endblock content %}

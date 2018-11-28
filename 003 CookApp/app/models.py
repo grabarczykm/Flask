@@ -18,14 +18,29 @@ class User(db.Model, UserMixin): #nadpisanie klasy UserMixin - zapewnia podstawo
     def __repr__(self):
         return (f"User('{self.username}', '{self.email}', '{self.image_file}')")
 
+Rec_Ing = db.Table('Rec_Ing',
+                   db.Column('receipe_id',db.Integer, db.ForeignKey('receipe.id')),
+                   db.Column('ingredient_id', db.Integer, db.ForeignKey('ingredient.id'))
+                   )
+
 class Receipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
+    ingredients = db.relationship('Ingredient', secondary = Rec_Ing, backref = db.backref('receipess', lazy='dynamic'))
 
     def __repr__(self):
-        return (f"Post('{self.title}', '{self.date_posted}')")
+        return (f"Receipe('{self.title}', '{self.date_posted}')")
+
+class Ingredient(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+
+    def __repr__(self):
+        return (f"Ingredient(' { self.name }')")
+
+
+
 

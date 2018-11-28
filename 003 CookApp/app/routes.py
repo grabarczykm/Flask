@@ -1,6 +1,6 @@
 from app import app, bcrypt, db
 from flask import render_template, url_for, flash, redirect, request
-from app.models import User, Receipe
+from app.models import User, Receipe, Ingredient
 from app.forms import RegistrationForm, LoginForm, ReceipeForm
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -10,6 +10,13 @@ from flask_login import login_user, current_user, logout_user, login_required
 def home():
     receipess = Receipe.query.order_by(Receipe.date_posted)
     return render_template('home.html', receipess=receipess)
+
+@app.route("/about")
+def about():
+
+    rec = Receipe.query.filter_by(title='jajka3').first()
+
+    return render_template('about.html', rec=rec)
 
 @app.route("/login", methods=['POST','GET'])
 def login():
@@ -71,12 +78,23 @@ def account():
 @login_required
 def new_receipe():
     form = ReceipeForm()
+    ingredients = Ingredient.query.order_by(Ingredient.name)
     if form.validate_on_submit():
         receipe = Receipe(title = form.title.data, content=form.content.data, author=current_user)
         db.session.add(receipe)
         db.session.commit()
 
-        flash('Your receipe has been added!', 'success')
-        return redirect(url_for('home'))
+        ing_list = request.form.getlist('ingredients')
+        if ing_list:
+            for ing in ing_list:
+                ingredient = Ingredient.query.filter_by(name = ing).first()
+                ingredient.receipess.append(receipe)
+                db.session.commit()
 
-    return render_template('new_receipe.html', form=form)
+            return render_template('receipess.html', ing_list = ing_list)
+        else:
+            return redirect(url_for('home'))
+
+    return render_template('new_receipe.html', form=form, ingredients=ingredients)
+
+

@@ -1,10 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+  <head>
+      <script>
+
+
+      </script>
+  </head>
+  <body>
+  <div>
+      {{ rec.title }}
+      {% for ing in rec.ingredients %}
+        {{ing.name}}
+      {% endfor %}
+
+  </div>
+  </body>
 </html>

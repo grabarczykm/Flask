@@ -1,33 +1,62 @@
 {% extends "layout.html" %}
 {% block content %}
-    <!------ Include the above in your HEAD tag ---------->
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Receipe</legend>
 
-    <div class="container">
-        <div class="row">
-            <input type="hidden" name="count" value="1" />
-            <div class="control-group" id="fields">
-                <label class="control-label" for="field1">Nice Multiple Form Fields</label>
-                <div class="controls" id="profs">
-                    <form method="POST" class="input-append" action="">
-                        {{ form.hidden_tag() }}
-                        <legend class="border-bottom mb-4">Your receipe</legend>
-                        <div class="form-group">
-                            {{ form.title.label(class="form-control-label")}}
-                            {{ form.title(class="form-control form-control-lg") }}
+                <!-- Formularz title z wyświetlaniem błędów-->
+                <div class="form-group">
+                    {{ form.title.label(class="form-control-label",id="textfield") }}
+                    {% if form.title.errors %}
+                        {{ form.title(class="form-control form-control-lg is-invalid", id="textfield") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
                         </div>
-                        <div class="form-group">
-                            {{ form.ingredients.label(class="form-control-label")}}
-                            <div id="field">{{ form.ingredients(class="input",id="field1") }}<button id="b1" class="btn add-more" type="button">+</button></div>
-                        </div>
-                        <div>
-                            {{ form.content.label(class="form-control-label")}}
-                            {{ form.content(class="form-control form-control-lg") }}
-                        </div>
-                        {{ form.submit(class="btn btn-outline-info") }}
-                    </form>
-                <br>
+                    {% else %}
+                        {{ form.title(class="form-control form-control-lg", id="textfield") }}
+                    {% endif %}
                 </div>
+
+                <!-- Formularz password z wyświetlaniem błędów-->
+                <div class="form-group">
+                    {{ form.content.label(class="form-control-label") }}
+                    {% if form.content.errors %}
+                        {{ form.content(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.content.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.content(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <select multiple name="ingredients">
+                        {% for ing in ingredients %}
+                            <option value="{{ing.name}}">{{ing.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
             </div>
-        </div>
+        </form>
+        <form method="POST" action="" target="_self">
+            <fieldset class="form-group">
+                <input type="text" name="new_ing" value="">
+                <input type="submit" value="Add new ingredient">
+            </fieldset>
+
+
+        </form>
     </div>
 {% endblock content %}

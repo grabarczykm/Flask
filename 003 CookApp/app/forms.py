@@ -35,13 +35,8 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
     remember = BooleanField('Remember Me')
 
-class IngredientForm(FlaskForm):
-    ingredient = StringField('Ingridient', validators=[DataRequired])
-
 class ReceipeForm(FlaskForm):
     title = StringField('Title',
                         validators=[DataRequired(), Length(min = 2, max=200)])
-    ingredients = FieldList(FormField(IngredientForm), min_entries=0)
-    add_ingredient = SubmitField('Add ingredient')
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Send receipe')
