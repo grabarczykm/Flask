@@ -1,6 +1,6 @@
 from app import app, bcrypt, db
 from flask import render_template, url_for, flash, redirect, request
-from app.models import User, Receipe, Ingredient
+from app.models import User, Receipe, Ingredient, Comment
 from app.forms import RegistrationForm, LoginForm, ReceipeForm, CommentForm
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -100,15 +100,23 @@ def new_receipe():
 
     return render_template('new_receipe.html', form=form, ingredients=ingredients)
 
-@app.route("/post/<int:receipe_id>")
+@app.route("/receipe/<int:receipe_id>")
 def receipe(receipe_id):
     receipe = Receipe.query.get(receipe_id)
     return render_template("receipe.html",receipe=receipe)
 
-@app.route("/add_comment")
-def add_comment():
+@app.route("/add_comment/<int:receipe_id>",methods=['POST','GET'])
+def add_comment(receipe_id):
+    receipe = Receipe.query.get(receipe_id)
+    receipe_id = receipe_id
     form = CommentForm()
-    return render_template('add_comment.html', form = form )
+    if form.validate_on_submit():
+        comment = Comment(content = form.content.data, receipe_id=receipe_id, user_id = receipe.author.id)
+        db.session.add(comment)
+        db.session.commit()
+
+        return redirect(url_for('receipe', receipe_id=receipe_id))
+    return render_template('add_comment.html', form = form, receipe=receipe)
 
 
 
