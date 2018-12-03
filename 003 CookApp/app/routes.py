@@ -76,7 +76,7 @@ def account(user_id):
     user = User.query.get(user_id)
     if user == current_user:
         return render_template('my_account.html', user=user)
-    if user != current_user:
+    elif user != current_user:
         return render_template('account.html', user=user)
 
 @app.route("/new_receipe",methods=['POST','GET'])

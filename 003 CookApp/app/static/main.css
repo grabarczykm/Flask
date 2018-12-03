@@ -98,3 +98,11 @@ a.article-title:hover {
 
 }
 
+.hidden2 {
+    width: 300px;
+    height: 120px;
+    overflow: scroll;
+
+
+}
+

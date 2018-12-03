@@ -1,4 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>ACCOUNT {{user.username}}</h1>
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                  <h2 class="mr-2">{{ user.username }}</h2>
+                </div>
+                <p class="article-content">Liczba napisanych komentarzy: {{ user.comments.count }}</p>
+                <p class="article-content">Liczba dodanych przepisów: {{ user.receipess.count }}</p>
+                {% for receipe in user.receipess %}
+                    <h4><a class="article-title" href="{{url_for('receipe',receipe_id = receipe.id)}}" >{{ receipe.title }}</a></h4>
+                {% endfor %}
+            </div>
+        </article>
 {% endblock content %}

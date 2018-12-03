@@ -1,5 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
+    <!-- Lista składników -->
+    <div class="col-md-4 ">
+          <div class="content-section hidden2">
+            <h4>Składniki</h4>
+              <ul class="list-group ">
+                {% for ingredient in receipe.ingredients %}
+                    <li class="list-group-item list-group-item-light ">{{ingredient.name}}</li>
+                {% endfor %}
+          </div>
+    </div>
     <!-- Treść posta  -->
         <article class="media content-section">
             <div class="media-body">
@@ -16,10 +26,10 @@
     </form>
     <!-- Komentarze -->
     {% for comment in receipe.comments %}
-        <div>
+        <div class="list-group-item list-group-item-light>
             <a href="{{url_for('account',user_id=receipe.author.id)}}">{{comment.author.username}}</a>
-            {{comment.content}}
-            {{comment.date_posted.strftime('%Y-%m-%d')}}
+            <p>{{comment.content}}</p>
+            <small><p>{{comment.date_posted.strftime('%Y-%m-%d')}}</p></small>
         </div>
     {% endfor %}
 {% endblock content %}
