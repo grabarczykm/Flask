@@ -10,8 +10,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 def home():
     page = request.args.get('page',1,type=int)
     receipess = Receipe.query.order_by(Receipe.date_posted.desc()).paginate(page=page, per_page=5)
+    ingredients = Ingredient.query.all()
     #receipess = Receipe.query.order_by(Receipe.date_posted)
-    return render_template('home.html', receipess=receipess)
+    return render_template('home.html', receipess=receipess, ingredients=ingredients)
 
 @app.route("/about")
 def about():
