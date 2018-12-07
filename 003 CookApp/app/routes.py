@@ -1,7 +1,7 @@
 from app import app, bcrypt, db
 from flask import render_template, url_for, flash, redirect, request
 from app.models import User, Receipe, Ingredient, Comment
-from app.forms import RegistrationForm, LoginForm, ReceipeForm, CommentForm
+from app.forms import RegistrationForm, LoginForm, ReceipeForm, CommentForm, IngredientForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -10,7 +10,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 def home():
     page = request.args.get('page',1,type=int)
     receipess = Receipe.query.order_by(Receipe.date_posted.desc()).paginate(page=page, per_page=5)
-    ingredients = Ingredient.query.all()
+    ingredients = Ingredient.query.order_by(Ingredient.name)
     #receipess = Receipe.query.order_by(Receipe.date_posted)
     return render_template('home.html', receipess=receipess, ingredients=ingredients)
 
@@ -119,7 +119,24 @@ def add_comment(receipe_id):
         return redirect(url_for('receipe', receipe_id=receipe_id))
     return render_template('add_comment.html', form = form, receipe=receipe)
 
+@app.route("/add_ingredient", methods=['POST', 'GET'])
+@login_required
+def add_ing():
 
+
+    form = IngredientForm()
+    ingredients = Ingredient.query.order_by(Ingredient.name)
+
+    if form.validate_on_submit():
+        ingredient = Ingredient(name = form.name.data, user_id = current_user.id)
+        db.session.add(ingredient)
+        db.session.commit()
+
+        ingredients = Ingredient.query.all()
+
+        return render_template('add_ing.html', form=form, ingredients=ingredients)
+
+    return render_template('add_ing.html', form=form, ingredients=ingredients)
 
 
 

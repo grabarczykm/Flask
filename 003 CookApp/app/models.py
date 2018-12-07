@@ -15,6 +15,7 @@ class User(db.Model, UserMixin): #nadpisanie klasy UserMixin - zapewnia podstawo
     password = db.Column(db.String(60), nullable=False)
     receipess = db.relationship('Receipe', backref='author', lazy=True)
     comments = db.relationship('Comment', backref='author', lazy=True)
+    ingredients = db.relationship('Ingredient', backref='author', lazy=True)
 
 
     def __repr__(self):
@@ -39,7 +40,8 @@ class Receipe(db.Model):
 
 class Ingredient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(100), unique=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
         return (f"Ingredient(' { self.name }')")

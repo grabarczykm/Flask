@@ -10,6 +10,7 @@
             </div>
             <h2><a class="article-title" href="{{url_for('receipe',receipe_id = receipe.id)}}" >{{ receipe.title }}</a></h2>
             <p class="article-content hidden">{{ receipe.content }}</p>
+               <p><small>Składniki:</small></p>
                {% for ing in receipe.ingredients %}
                     <small  class="text-muted">{{ing.name }}</small>
                {% endfor%}

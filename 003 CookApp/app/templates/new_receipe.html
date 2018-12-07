@@ -4,7 +4,7 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Receipe</legend>
+                <legend class="border-bottom mb-4">Przepis</legend>
 
                 <!-- Formularz title z wyświetlaniem błędów-->
                 <div class="form-group">
@@ -36,11 +36,13 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
+                    <p>Składniki</p>
                     <select multiple name="ingredients">
                         {% for ing in ingredients %}
                             <option value="{{ing.name}}">{{ing.name}}</option>
                         {% endfor %}
                     </select>
+                    <p><small>Hold Ctr to choose many ingredients</small></p>
                 </div>
 
 
@@ -49,14 +51,6 @@
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
-        </form>
-        <form method="POST" action="" target="_self">
-            <fieldset class="form-group">
-                <input type="text" name="new_ing" value="">
-                <input type="submit" value="Add new ingredient">
-            </fieldset>
-
-
         </form>
     </div>
 {% endblock content %}

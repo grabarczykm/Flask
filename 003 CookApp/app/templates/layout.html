@@ -32,6 +32,7 @@
                 <a class="nav-item nav-link" href="/logout">Logout</a>
                 <a class="nav-item nav-link" href="{{url_for('account',user_id=current_user.id)}}">{{ current_user.username }}</a>
                 <a class="nav-item nav-link" href="/new_receipe">Add Receipe</a>
+                <a class="nav-item nav-link" href="/add_ingredient">Add Ingredient</a>
               {% else %}
                 <a class="nav-item nav-link" href="/login">Login</a>
                 <a class="nav-item nav-link" href="/register">Register</a>
@@ -59,7 +60,11 @@
                   {% endfor %}
                 </ul>
               </p>
+              {% if current_user.is_authenticated %}
+                <a class="btn btn-outline-info" href="/add_ingredient">Doddaj składnik</a>
+              {% endif %}
             </div>
+
           </div>
         {% else %}
           <div class="col-md-4">

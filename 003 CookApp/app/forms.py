@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField, SubmitField, BooleanField,TextAreaField, FieldList, FormField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from app.models import User
+from app.models import User, Ingredient
 
 #Formularz rejestracji
 class RegistrationForm(FlaskForm):
@@ -44,3 +44,15 @@ class ReceipeForm(FlaskForm):
 class CommentForm(FlaskForm):
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Send comment')
+
+class IngredientForm(FlaskForm):
+    name = StringField('Nazwa składnika',
+                         validators=[DataRequired(), Length(min = 2, max=100)])
+    submit = SubmitField('Send Ingredient')
+
+    #Funkcja służąca validowaniu dodawanego składnika
+    def validate_name(self, name):
+
+        ing = Ingredient.query.filter_by(name = name.data).first() # sprawdzanie czy istnieje użytkownik o username wprowadzonym wlasnie do formularza rejestracji
+        if ing:
+            raise ValidationError('This ingredient is already on the list')
