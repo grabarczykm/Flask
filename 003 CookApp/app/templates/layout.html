@@ -56,7 +56,7 @@
               <p class='text-muted'>
                 <ul class="list-group">
                   {% for ingredient in ingredients %}
-                    <li class="list-group-item list-group-item-light">{{ingredient.name}}</li>
+                    <li class="list-group-item list-group-item-light"><a href="{{url_for('home',ing_id=ingredient.id)}}">{{ingredient.name}}</a></li>
                   {% endfor %}
                 </ul>
               </p>

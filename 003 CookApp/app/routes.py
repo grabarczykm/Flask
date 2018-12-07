@@ -14,6 +14,14 @@ def home():
     #receipess = Receipe.query.order_by(Receipe.date_posted)
     return render_template('home.html', receipess=receipess, ingredients=ingredients)
 
+@app.route("/home/<int:ing_id>")
+def home_filter(ing_id):
+
+    ingredient = Ingredient.query.filter(Ingredient.id == ing_id)
+    receipess = Receipe.query.filter(Receipe.ingredients.like(ingredient))
+
+    return render_template('home.html', receipess=receipess)
+
 @app.route("/about")
 def about():
 
