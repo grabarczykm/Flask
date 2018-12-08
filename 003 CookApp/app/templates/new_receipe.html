@@ -36,8 +36,9 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
+
                     <p>Składniki</p>
-                    <select multiple name="ingredients">
+                    <select multiple="" class="form-control select-checkbox"  name="ingredients">
                         {% for ing in ingredients %}
                             <option value="{{ing.name}}">{{ing.name}}</option>
                         {% endfor %}
