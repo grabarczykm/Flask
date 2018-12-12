@@ -100,10 +100,12 @@ def logout():
 @app.route("/account/<int:user_id>")
 def account(user_id):
     user = User.query.get(user_id)
+    receipes = Receipe.query.with_parent(user).count()
+    comments = Comment.query.with_parent(user).count()
     if user == current_user:
-        return render_template('my_account.html', user=user)
+        return render_template('my_account.html', user=user,receipes = receipes, comments = comments)
     elif user != current_user:
-        return render_template('account.html', user=user)
+        return render_template('account.html', user=user, receipes= receipes, comments=comments)
 
 @app.route("/new_receipe",methods=['POST','GET'])
 @login_required

@@ -5,8 +5,8 @@
                 <div class="article-metadata">
                   <h2 class="mr-2">{{ user.username }}</h2>
                 </div>
-                <p class="article-content">Liczba napisanych komentarzy: {{ user.comments.count }}</p>
-                <p class="article-content">Liczba dodanych przepisów: {{ user.receipess.count }}</p>
+                <p class="article-content">Liczba napisanych komentarzy: {{ comments }}</p>
+                <p class="article-content">Liczba dodanych przepisów: {{ receipes }}</p>
                 {% for receipe in user.receipess %}
                     <h4><a class="article-title" href="{{url_for('receipe',receipe_id = receipe.id)}}" >{{ receipe.title }}</a></h4>
                 {% endfor %}
